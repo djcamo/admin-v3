@@ -1,0 +1,1 @@
+<h1 class="page-title txt-color-blueDark"><i class="fa fa-question fa-fw "></i> FAQS</h1>
