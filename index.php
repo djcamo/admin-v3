@@ -16,6 +16,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
   <style>
     .table td{vertical-align:middle}
   </style>
@@ -174,10 +175,14 @@
     <!-- AngularJS scripts for all pages-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
+    <script src="js/ng-file-upload.min.js"></script>
+
+    
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controller.js"></script>
+    
   </div>
 </body>
 </html>

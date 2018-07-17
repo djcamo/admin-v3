@@ -65,7 +65,7 @@
 		  </div>		  
 		  <div class="form-group">
 		    <label for="testimonialImage">Image</label>
-		    <input type="text" id="testimonialImage"  name="testimonialImage" ng-model="frm.image" class="form-control">
+		    <input type="file" id="testimonialImage"  name="testimonialImage" ng-model="frm.image" class="form-control" custom-on-change="uploadFile">
 		    <p class="help-block">Upload testimonial image</p>
 		  </div>
 		  <button type="submit" class="btn btn-outline-success btn-sm" >Add Testimonial</button>

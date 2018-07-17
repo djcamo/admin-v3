@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'controller', 'ui.bootstrap'])
+angular.module('app', ['ngRoute', 'controller', 'ui.bootstrap', 'ngFileUpload'])
 
 .config(function($routeProvider, $locationProvider) {
 	

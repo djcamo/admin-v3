@@ -4,6 +4,16 @@
 	angular
 		.module('controller',[])
 		
+		.directive('customOnChange', function() {
+			return {
+			  restrict: 'A',
+			  link: function (scope, element, attrs) {
+				var onChangeHandler = scope.$eval(attrs.customOnChange);
+				element.bind('change', onChangeHandler);
+			  }
+			};
+		  })
+
 		.controller('PagesCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $modal, $filter) {	
 			getPages();
 			function getPages(){
@@ -65,11 +75,15 @@
 					getTestmonials();	
 				})
 			}
+			$scope.uploadFile = function(event){
+				$scope.imageName = event.target.files[0].name;
+				console.log($scope.imageName);
+			};
 			$scope.addShow = function() {
 				$('#addTestimonial').modal('show');
 			}
 			$scope.addTestimonial = function($params) {		
-				$http.post('ajax/add-item.php?table=testimonials',{'username':$params.username, 'testimonial':$params.testimonial, 'position':$params.position, 'image':$params.image}).then(function(data){
+				$http.post('ajax/add-item.php?table=testimonials',{'username':$params.username, 'testimonial':$params.testimonial, 'position':$params.position, 'image':$scope.imageName}).then(function(data){
 					getTestmonials();
 					$('#addTestimonial').modal('hide');
 					swal("Testimonial Added", "", "info");
@@ -77,14 +91,14 @@
 			}				
 		}])
 
-		.controller('SlidersCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $modal, $filter) {	
+		.controller('SlidersCtrl', ['$scope', '$http', '$uibModal', 'Upload', function($scope, $http, $modal, $filter, Upload) {	
 			getSliders();
 			function getSliders(){
 				$http.get('ajax/get-items.php?table=sliders').then(function(data){
 					$scope.sliders = data;		
 				})	
 			};	
-			$scope.deleteSlider = function($params) {
+			$scope.deleteSlide = function($params) {
 				swal({
 					title: "Are you sure?",
 					text: "Once deleted, you will not be able to recover this record!",
@@ -101,11 +115,32 @@
 					}
 				});				
 			}
+			$scope.uploadFile = function(event){
+				$scope.imageName = event.target.files[0].name;
+			};
 			$scope.addShow = function() {
 				$('#addSlide').modal('show');
 			}
+			$scope.uploadPic = function(file) {
+				file.upload = Upload.upload({
+				  url: 'ajax/upload.php',
+				  data: { file: file},
+				});
+			
+				file.upload.then(function (response) {
+				  $timeout(function () {
+					file.result = response.data;
+				  });
+				}, function (response) {
+				  if (response.status > 0)
+					$scope.errorMsg = response.status + ': ' + response.data;
+				}, function (evt) {
+				  // Math.min is to fix IE which reports 200% sometimes
+				  file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+				});
+			}
 			$scope.addSlide = function($params) {		
-				$http.post('ajax/add-item.php?table=sliders',{'alttext':$params.alttext, 'caption1':$params.caption1, 'caption2':$params.caption2, 'image':$params.image}).then(function(data){
+				$http.post('ajax/add-item.php?table=sliders',{'alttext':$params.alttext, 'caption1':$params.caption1, 'caption2':$params.caption2, 'image':$scope.imageName}).then(function(data){
 					getSliders();
 					$('#addSlide').modal('hide');
 					swal("Slide Added", "", "info");
@@ -129,7 +164,30 @@
 					})			
 				} 	
 			}	
-						
+			$scope.changeServiceStatus = function(service){
+				service.status = (service.status=="Active" ? "Inactive" : "Active");
+				$http.post('ajax/item-status.php?table=services', {'id':service}).then(function(data) {
+					if(service.status == "Active"){
+						swal("Service Enabled", "", "info");
+					}else{
+						swal("Service Disabled", "", "info");
+					}					
+					getTestmonials();	
+				})
+			}
+			$scope.uploadFile = function(event){
+				$scope.imageName = event.target.files[0].name;
+			};
+			$scope.addShow = function() {
+				$('#addService').modal('show');
+			}
+			$scope.addService = function($params) {		
+				$http.post('ajax/add-item.php?table=sliders',{'alttext':$params.alttext, 'caption1':$params.caption1, 'caption2':$params.caption2, 'image':$scope.imageName}).then(function(data){
+					getServices();
+					$('#addService').modal('hide');
+					swal("Service Added", "", "info");
+				})			
+			}				
 		}])
 
 		.controller('ProductsCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $modal, $filter) {
@@ -139,11 +197,15 @@
 					$scope.products = data;		
 				})	
 			};
+			$scope.uploadFile = function(event){
+				$scope.imageName = event.target.files[0].name;
+				console.log($scope.imageName);
+			};
 			$scope.addShow = function() {
 				$('#addProduct').modal('show');
 			}
 			$scope.addProduct = function($params) {		
-				$http.post('ajax/add-item.php?table=products',{'name':$params.Name, 'description':$params.Description, 'category':$params.Category, 'image':$params.Image, 'price':$params.Price, 'status':'Active'}).then(function(data){
+				$http.post('ajax/add-item.php?table=products',{'name':$params.Name, 'description':$params.Description, 'category':$params.Category, 'image':$scope.imageName, 'price':$params.Price, 'status':'Active'}).then(function(data){
 					getProducts();
 					$('#addProduct').modal('hide');
 				})			

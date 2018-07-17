@@ -2,7 +2,9 @@
 	$data = json_decode(file_get_contents("php://input"));	
 	include('mysql_crud.php');
 	include('ChromePhp.php');
-	ChromePhp::log($data);
+    ChromePhp::log($data);
+
+    //update the database   
     $date = date("Y-m-d");
     $table = $_GET["table"];
 	$db = new Database();

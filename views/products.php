@@ -71,7 +71,7 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="productImage">Image</label>
-		    <input type="text" id="productImage"  name="productImage" ng-model="frm.Image" class="form-control">
+		    <input type="file" id="productImage"  name="productImage" ng-model="frm.Image" class="form-control" custom-on-change="uploadFile">
 		    <p class="help-block">Upload product image</p>
 		  </div>
 		  <button type="submit" class="btn btn-outline-success btn-sm" >Add Product</button>
