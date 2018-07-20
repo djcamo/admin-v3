@@ -31,5 +31,13 @@ angular.module('app', ['ngRoute', 'controller', 'ui.bootstrap', 'ngFileUpload'])
 		templateUrl: 'views/services.php',
 		controller: 'ServicesCtrl'
 	})
+	.when('/company', {
+		templateUrl: 'views/company.php',
+		controller: 'CompanyCtrl'
+	})
+	.when('/config', {
+		templateUrl: 'views/config.php',
+		controller: 'ConfigCtrl'
+	})
 	.otherwise({ redirectTo: '/home' }); 
 })

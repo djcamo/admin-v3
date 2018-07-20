@@ -36,34 +36,46 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pages">
           <a class="nav-link" href="#/pages">
             <i class="fa fa-fw fa-file-text"></i>
             <span class="nav-link-text">Pages</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Products">
           <a class="nav-link" href="#/products">
             <i class="fa fa-fw fa-shopping-cart"></i>
             <span class="nav-link-text">Products</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Testimonials">
           <a class="nav-link" href="#/testimonials">
             <i class="fa fa-fw fa-bullhorn"></i>
             <span class="nav-link-text">Testimonials</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Slider">
           <a class="nav-link" href="#/sliders">
             <i class="fa fa-fw fa-file-video-o"></i>
             <span class="nav-link-text">Slider</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Services">
           <a class="nav-link" href="#/services">
             <i class="fa fa-fw fa-file-o"></i>
             <span class="nav-link-text">Services</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Company">
+          <a class="nav-link" href="#/company">
+            <i class="fa fa-fw fa-globe"></i>
+            <span class="nav-link-text">Company</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Config">
+          <a class="nav-link" href="#/config">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Config</span>
           </a>
         </li>
       </ul>
