@@ -286,5 +286,13 @@
 			
 		}])
 
+		.controller('CompanyCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $modal, $filter) {	
+		
+		}])
+
+		.controller('ConfigCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $modal, $filter) {	
+		
+		}])
+
 
 })();
